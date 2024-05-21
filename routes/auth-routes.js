@@ -1,6 +1,7 @@
 const express = require("express");
 const Users = require("../model/user.model");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
@@ -79,7 +80,7 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     res.status(500).send({
       message: "Internal Server error",
-      error: error,
+      error: error.message,
     });
   }
 });
